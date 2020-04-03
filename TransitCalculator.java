@@ -2,8 +2,8 @@ package programming.CodeAcademy;
 
 public class TransitCalculator {
 	//consumer information
-	int numberOfDaysExpected;
-	int numberOfRidesExpected;
+	int transitDays;
+	int numberOfRides;
 	int age;
 	boolean hasDisability;
 	boolean hasDiscount;
@@ -13,14 +13,19 @@ public class TransitCalculator {
 	double sevenDaysUnlimited = 33.00;
 	double thirtyDaysUnlimited = 127.00;
 	
-	double days; 
-	double numberOfPasses;
-	double totalCost;
-	double pricePerRide;
+	
+	static double numberOfPasses;
+	static double totalCost;
+	static double pricePerRide;
 	
 	
 	public static void main(String[] args) {
-		TransitCalculator ticket = new TransitCalculator(19, 20, 80, false);
+		int expectedDays = 6;
+		int expectedRides = 14;
+		int age = 25;
+		boolean hasDisability = false;
+		
+		TransitCalculator ticket = new TransitCalculator(expectedDays, expectedRides, age, hasDisability);
 		ticket.getBestFare();
 	}
 	
@@ -30,8 +35,8 @@ public class TransitCalculator {
 	
 	
 	public TransitCalculator(int days, int rides, int age, boolean disability) {
-		this.numberOfDaysExpected = days;
-		this.numberOfRidesExpected = rides;
+		this.transitDays = days;
+		this.numberOfRides = rides;
 		this.age = age;
 		this.hasDisability = disability;
 		
@@ -48,10 +53,10 @@ public class TransitCalculator {
 		if (hasDiscount) {
 			singleRide = 1.35;
 		} 
-			days = Double.valueOf(numberOfDaysExpected);
-			numberOfPasses = days * numberOfRidesExpected;
+			//days = Double.valueOf(transitDays);
+			numberOfPasses = transitDays * numberOfRides;
 			totalCost = singleRide * numberOfPasses;
-			pricePerRide = totalCost / numberOfRidesExpected;
+			pricePerRide = totalCost / numberOfRides;
 		
 		return pricePerRide;
 	}
@@ -61,10 +66,10 @@ public class TransitCalculator {
 		if (hasDiscount) {
 			sevenDaysUnlimited = 16.50;
 		} 
-			days = Double.valueOf(numberOfDaysExpected);
-			numberOfPasses = Math.ceil(days/7);
+			
+			numberOfPasses = Math.ceil(transitDays/7.0);
 			totalCost = sevenDaysUnlimited * numberOfPasses;
-			pricePerRide = totalCost / numberOfRidesExpected;
+			pricePerRide = totalCost / numberOfRides;
 		
 		return pricePerRide;
 	}
@@ -74,10 +79,10 @@ public class TransitCalculator {
 		if (hasDiscount) {
 			thirtyDaysUnlimited = 63.50;
 		}
-			days = Double.valueOf(numberOfDaysExpected);
-			numberOfPasses = Math.ceil(days/30);
+			//days = Double.valueOf(transitDays);
+			numberOfPasses = Math.ceil(transitDays/30.0);
 			totalCost = thirtyDaysUnlimited * numberOfPasses;
-			pricePerRide = totalCost / numberOfRidesExpected;
+			pricePerRide = totalCost / numberOfRides;
 		
 		return pricePerRide;
 	}
@@ -102,8 +107,8 @@ public class TransitCalculator {
 				fare = fareOptions[i];
 			}
 		} 
+		minPrice = Math.round(minPrice * 100.0) / 100.0;
 		
-		minPrice = Math.round(minPrice * 100.0) /100.0;
 		StringBuilder bestOption = new StringBuilder();
 		bestOption.append("Your best option is to buy the " + fare + " pass at $" + minPrice + " per ride.");
 
