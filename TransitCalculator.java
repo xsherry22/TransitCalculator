@@ -105,7 +105,7 @@ public class TransitCalculator {
 		
 		minPrice = Math.round(minPrice * 100.0) /100.0;
 		StringBuilder bestOption = new StringBuilder();
-		bestOption.append("Your best option is the " + fare + " pass at $" + minPrice + " per ride.");
+		bestOption.append("Your best option is to buy the " + fare + " pass at $" + minPrice + " per ride.");
 
 	
 		System.out.println(bestOption);
