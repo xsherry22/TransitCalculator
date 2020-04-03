@@ -53,7 +53,6 @@ public class TransitCalculator {
 		if (hasDiscount) {
 			singleRide = 1.35;
 		} 
-			//days = Double.valueOf(transitDays);
 			numberOfPasses = transitDays * numberOfRides;
 			totalCost = singleRide * numberOfPasses;
 			pricePerRide = totalCost / numberOfRides;
@@ -79,7 +78,6 @@ public class TransitCalculator {
 		if (hasDiscount) {
 			thirtyDaysUnlimited = 63.50;
 		}
-			//days = Double.valueOf(transitDays);
 			numberOfPasses = Math.ceil(transitDays/30.0);
 			totalCost = thirtyDaysUnlimited * numberOfPasses;
 			pricePerRide = totalCost / numberOfRides;
