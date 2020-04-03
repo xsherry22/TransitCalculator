@@ -20,8 +20,8 @@ public class TransitCalculator {
 	
 	
 	public static void main(String[] args) {
-		int expectedDays = 6;
-		int expectedRides = 14;
+		int expectedDays = 22;
+		int expectedRides = 50;
 		int age = 25;
 		boolean hasDisability = false;
 		
