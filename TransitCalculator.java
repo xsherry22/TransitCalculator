@@ -9,14 +9,15 @@ public class TransitCalculator {
 	boolean hasDiscount;
 	
 	//fare options
-	double singleRide = 2.75;
-	double sevenDaysUnlimited = 33.00;
-	double thirtyDaysUnlimited = 127.00;
+	static double singleRide = 2.75;
+	static double sevenDaysUnlimited = 33.00;
+	static double thirtyDaysUnlimited = 127.00;
+	
+	double numberOfPasses;
+	double totalCost;
+	double pricePerRide;
 	
 	
-	static double numberOfPasses;
-	static double totalCost;
-	static double pricePerRide;
 	
 	
 	public static void main(String[] args) {
@@ -53,6 +54,7 @@ public class TransitCalculator {
 		if (hasDiscount) {
 			singleRide = 1.35;
 		} 
+			//days = Double.valueOf(transitDays);
 			numberOfPasses = transitDays * numberOfRides;
 			totalCost = singleRide * numberOfPasses;
 			pricePerRide = totalCost / numberOfRides;
@@ -78,6 +80,7 @@ public class TransitCalculator {
 		if (hasDiscount) {
 			thirtyDaysUnlimited = 63.50;
 		}
+			//days = Double.valueOf(transitDays);
 			numberOfPasses = Math.ceil(transitDays/30.0);
 			totalCost = thirtyDaysUnlimited * numberOfPasses;
 			pricePerRide = totalCost / numberOfRides;
