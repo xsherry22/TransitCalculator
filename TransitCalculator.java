@@ -1,4 +1,9 @@
 package programming.CodeAcademy;
+/**
+ * This program outputs the cheapest fare option on a price-per-ride basis.
+ * A discount is provided if the consumer has a disability or is a senior
+ * that is or over 65 years old.
+ */
 
 public class TransitCalculator {
 	//consumer information
@@ -7,19 +12,18 @@ public class TransitCalculator {
 	int age;
 	boolean hasDisability;
 	boolean hasDiscount;
-	
+
 	//fare options
 	static double singleRide = 2.75;
 	static double sevenDaysUnlimited = 33.00;
 	static double thirtyDaysUnlimited = 127.00;
-	
+
+	//calculating price per ride
 	double numberOfPasses;
 	double totalCost;
 	double pricePerRide;
 	
-	
-	
-	
+
 	public static void main(String[] args) {
 		int expectedDays = 6;
 		int expectedRides = 14;
@@ -31,9 +35,7 @@ public class TransitCalculator {
 	}
 	
 	
-	public TransitCalculator() {
-	}
-	
+	public TransitCalculator() {}
 	
 	public TransitCalculator(int days, int rides, int age, boolean disability) {
 		this.transitDays = days;
@@ -46,9 +48,7 @@ public class TransitCalculator {
 		} else {
 			this.hasDiscount = false;
 		}
-		
 	}
-	
 	
 	public double payPerRide() {
 		if (hasDiscount) {
@@ -61,7 +61,6 @@ public class TransitCalculator {
 		return pricePerRide;
 	}
 	
-	
 	public double unlimited7Price() {
 		if (hasDiscount) {
 			sevenDaysUnlimited = 16.50;
@@ -69,11 +68,10 @@ public class TransitCalculator {
 			numberOfPasses = Math.ceil(transitDays/7.0);
 			totalCost = sevenDaysUnlimited * numberOfPasses;
 			pricePerRide = totalCost / numberOfRides;
-		
+
 		return pricePerRide;
 	}
-	
-	
+
 	public double unlimited30Price() {
 		if (hasDiscount) {
 			thirtyDaysUnlimited = 63.50;
@@ -81,17 +79,14 @@ public class TransitCalculator {
 			numberOfPasses = Math.ceil(transitDays/30.0);
 			totalCost = thirtyDaysUnlimited * numberOfPasses;
 			pricePerRide = totalCost / numberOfRides;
-		
+
 		return pricePerRide;
 	}
 	
-	
 	public double[] getRidePrices() {
 		double [] ridePrices = {payPerRide(), unlimited7Price(), unlimited30Price()};
-		 
 		return ridePrices;
 	}
-	
 	
 	public void getBestFare() {
 		String [] fareOptions = {"Pay-Per-Ride", "7-day unlimited", "30-day unlimited"};
@@ -106,16 +101,10 @@ public class TransitCalculator {
 			}
 		} 
 		minPrice = Math.round(minPrice * 100.0) / 100.0;
-		
 		StringBuilder bestOption = new StringBuilder();
 		bestOption.append("Your best option is to buy the " + fare + " pass at $" + minPrice + " per ride.");
-
 	
 		System.out.println(bestOption);
-		
 	}
-	
-
-
 
 }
